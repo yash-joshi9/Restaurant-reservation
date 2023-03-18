@@ -7,7 +7,6 @@ export default function Reviews() {
         What 100 people are saying
       </h1>
       <div>
-        {/* REVIEW CARD */}
         <div className="border-b pb-7 mb-7">
           <div className="flex">
             <div className="w-1/6 flex flex-col items-center">
@@ -30,7 +29,6 @@ export default function Reviews() {
             </div>
           </div>
         </div>
-        {/* REVIEW CARD */}
       </div>
     </div>
   );
