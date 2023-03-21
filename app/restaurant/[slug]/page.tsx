@@ -1,7 +1,4 @@
-import Link from "next/link";
-import NavBar from "../../components/Navbar";
 import Description from "./Components/Description";
-import Header from "./Components/Header";
 import Images from "./Components/Images";
 import Rating from "./Components/Rating";
 import ReservationCard from "./Components/ReservationCard";
@@ -12,18 +9,15 @@ import Title from "./Components/Title";
 export default function RestaurantDetailsPage() {
   return (
     <>
-      <Header />
-      <div className="flex m-auto w-2/3 justify-between items-start 0 -mt-11">
-        <div className="bg-white w-[70%] rounded p-3 shadow">
-          <ResturantNavBar />
-          <Title />
-          <Rating />
-          <Description />
-          <Images />
-          <Reviews />
-        </div>
-        <ReservationCard />
+      <div className="bg-white w-[70%] rounded p-3 shadow">
+        <ResturantNavBar />
+        <Title />
+        <Rating />
+        <Description />
+        <Images />
+        <Reviews />
       </div>
+      <ReservationCard />
     </>
   );
 }
