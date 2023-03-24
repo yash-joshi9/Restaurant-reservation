@@ -24,6 +24,10 @@ module.exports = {
       "6xl": "50px",
       "7xl": "70px",
     },
+    fontWeight: {
+      bold: "900",
+      semibold: "600",
+    },
     fontFamily: {
       mont: ['"Montserrat"', ...defaultTheme.fontFamily.sans],
     },
