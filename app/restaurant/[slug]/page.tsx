@@ -9,12 +9,30 @@ import Title from "./Components/Title";
 
 const prima = new PrismaClient();
 
-const fetchRestaurantBySlug = async (slug: string) => {
+interface Restaurant {
+  id: number;
+  name: string;
+  images: string[];
+  description: string;
+  slug: string;
+}
+const fetchRestaurantBySlug = async (slug: string): Promise<Restaurant> => {
   const restaurant = await prima.restaurant.findUnique({
     where: {
       slug,
     },
+    select: {
+      id: true,
+      name: true,
+      images: true,
+      description: true,
+      slug: true,
+    },
   });
+
+  if (!restaurant) {
+    throw new Error();
+  }
   return restaurant;
 };
 
@@ -24,15 +42,15 @@ export default async function RestaurantDetailsPage({
   params: { slug: string };
 }) {
   const restaurant = await fetchRestaurantBySlug(params.slug);
-  console.log(restaurant, ">>>>>>>>>>props");
+  const { description, id, images, name, slug } = restaurant;
   return (
     <>
       <div className="bg-white w-[70%] rounded p-3 shadow">
-        <ResturantNavBar />
-        <Title />
+        <ResturantNavBar slug={slug} />
+        <Title name={name} />
         <Rating />
-        <Description />
-        <Images />
+        <Description description={description} />
+        <Images images={images} />
         <Reviews />
       </div>
       <ReservationCard />
